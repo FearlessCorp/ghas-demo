@@ -26,10 +26,12 @@ jobs:
 
       # Run analyzers
     - name: Run Microsoft Security DevOps Analysis
-      uses: microsoft/security-devops-action@preview
+      uses: microsoft/security-devops-action@v1.6.0
       id: msdo
       with:
-        categories: 'IaC'
+        categories: 'IaC,secrets,container,code,artifacts'
+        languages: 'javascript'
+        tools: 'eslint,template-analyzer,terrascan,bandt,binskim'
 
       # Upload alerts to the Security tab
     - name: Upload alerts to Security tab
