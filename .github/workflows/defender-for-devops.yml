@@ -26,12 +26,12 @@ jobs:
 
       # Run analyzers
     - name: Run Microsoft Security DevOps Analysis
-      uses: microsoft/security-devops-action@v1.6.0
+      uses: microsoft/security-devops-action@preview
       id: msdo
-      with:
-        categories: 'IaC,secrets,container,code,artifacts'
-        languages: 'javascript'
-        tools: 'eslint,template-analyzer,terrascan,bandt,binskim'
+      # with:
+      #   categories: 'IaC,secrets,container,code,artifacts'
+      #   languages: 'javascript'
+      #   tools: 'eslint,template-analyzer,terrascan,bandit,binskim'
 
       # Upload alerts to the Security tab
     - name: Upload alerts to Security tab
@@ -42,6 +42,6 @@ jobs:
       # Upload alerts file as a workflow artifact
     - name: Upload alerts file as a workflow artifact
       uses: actions/upload-artifact@v3
-      with:  
+      with:
         name: alerts
         path: ${{ steps.msdo.outputs.sarifFile }}
