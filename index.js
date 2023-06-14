@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.status(200).send(JSON.stringify({ name: version.getName(), version: version.getVersion() }));
 });
 
-// Route - user search
+// Route - user searchs
 app.get("/users", function (req, res) {
   let search = "%";
 
